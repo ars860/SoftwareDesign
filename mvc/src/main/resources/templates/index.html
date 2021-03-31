@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{index.css}">
+</head>
+<body>
+<!--/*@thymesVar id="thingLists" type="com.example.mvc.domain.ThingsList"*/-->
+    <div class="lists">
+        <div th:each="thingList : ${thingLists}" class="thingList">
+            <form th:action="@{/edit-list}"
+                  method="post">
+                <input th:value="${thingList.description}" name="description" class="myInput big"
+                       onchange="this.form.submit()"/>
+                <input type="hidden" name="listId" th:value="${thingList.id}"/>
+            </form>
+
+            <div class="things">
+                <form th:each="thing : ${thingList.things}" class="thing"
+                      th:action="@{/edit-thing}"
+                      method="post">
+                    <input th:value="${thing.description}" class="myInput"
+                           name="description" onchange="this.form.submit()">
+                    <input type="checkbox" th:checked="${thing.done}"
+                           name="done" onchange="this.form.submit()">
+                    <input type="hidden" name="thingId" th:value="${thing.id}"/>
+                </form>
+            </div>
+
+            <div class="listDescription">
+                <form th:action="@{/add-empty-thing(thingListId=${thingList.id})}"
+                      method="post">
+                    <button class="addThing">
+                        add thing
+                    </button>
+                </form>
+
+                <form class="deleteButton" th:action="@{/delete-list}"
+                      method="post">
+                    <button>
+                        delete list
+                    </button>
+                    <input type="hidden" name="listId" th:value="${thingList.id}" onchange="this.form.submit()"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <form method="post" th:action="@{/add-empty-list}">
+        <button type="submit" name="submit">
+            add TODO list
+        </button>
+    </form>
+</body>
+</html>

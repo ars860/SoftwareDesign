@@ -1,0 +1,8 @@
+.idea
+*.iml
+.gradle
+.mvn
+target
+build
+software-design
+test-containers-example

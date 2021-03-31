@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+}
+
+.thingList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.things {
+    margin-left: 20px;
+}
+
+.thing {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.myInput {
+    border: 0;
+}
+
+.big {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.listDescription {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteButton {
+    margin-left: 10px;
+}
